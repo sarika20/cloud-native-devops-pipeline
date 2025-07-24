@@ -1,0 +1,35 @@
+name: CI/CD: Deploy Nginx using Ansible
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+
+    - name: Install Ansible
+      run: |
+        sudo apt update
+        sudo apt install ansible -y
+
+   - name: Create key file from GitHub Secret
+      run: |
+        echo "${{ secrets.AWS_PRIVATE_KEY }}" > key.pem
+        chmod 600 key.pem
+
+    - name: Run Ansible Playbook
+      run: |
+        ansible-playbook ansible/playbooks/nginx_setup.yml -i ansible/inventory.ini
+      env:
+        ANSIBLE_HOST_KEY_CHECKING: False
