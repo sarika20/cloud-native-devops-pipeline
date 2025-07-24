@@ -15,7 +15,11 @@ variable "key_name" {
   default     = "sarika-dev-key"
 }
 
-variable "private_key_path" {
-  description = "Local path to your private .pem key"
-  default     = "~/.ssh/sarika-dev-key.pem"
+variable "private_key" {
+  description = "Private key string"
+  type        = string
 }
+#variable "private_key_path" {
+#  description = "Local path to your private .pem key"
+#  default     = "~/.ssh/sarika-dev-key.pem"
+#}
