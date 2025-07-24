@@ -20,7 +20,7 @@ resource "aws_instance" "web" {
     connection {
       type        = "ssh"
       user        = "ubuntu"
-      private_key = file("key.pem")
+      private_key = var.private_key
       host        = self.public_ip
     }
   }
