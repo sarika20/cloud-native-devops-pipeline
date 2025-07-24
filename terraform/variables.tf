@@ -3,15 +3,15 @@ variable "aws_region" {
 }
 
 variable "ami_id" {
-  default = "ami-0da59f1af71ea4ad2"  # Ubuntu 22.04 LTS for Mumbai
+  default = "ami-021a584b49225376d"  # Ubuntu 22.04 LTS for Mumbai
 }
 
 variable "instance_type" {
-  default = "t2.micro"
+  default = "t3.micro"
 }
 
 variable "key_name" {
-  description = "EC2 Key Pair Name"
+  description = "sarika-dev-key"
   default     = "sarika-dev-key"
 }
 
