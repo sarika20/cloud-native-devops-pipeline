@@ -22,4 +22,4 @@ This project demonstrates a real-world DevOps pipeline to:
 ## 📌 Use Case
 A fully automated pipeline to spin up infrastructure, configure it, and deploy a working web server—all triggered on every code push.
 
-## 🚀 Status: In Progress (Day 1/7)
+## 🚀 Status: In Progress 
