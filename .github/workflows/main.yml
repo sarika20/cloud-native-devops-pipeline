@@ -43,6 +43,8 @@ jobs:
     - name: Get EC2 IP
       id: get_ip
       run: echo "IP=$(terraform output -raw instance_public_ip)" >> $GITHUB_ENV
+      working-directory: terraform
+
 
     - name: Run Ansible
       run: ansible-playbook -i "$IP," ansible/playbooks/nginx_setup.yml
