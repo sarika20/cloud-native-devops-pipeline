@@ -12,7 +12,7 @@ variable "instance_type" {
 
 variable "key_name" {
   description = "sarika-dev-key"
-  default     = "sarika-dev-key"
+  default     = "sarika-dev-key.pem"
 }
 
 variable "private_key" {
