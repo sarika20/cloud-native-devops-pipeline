@@ -33,4 +33,4 @@ jobs:
         run: |
           ansible-playbook ansible/playbooks/nginx_setup.yml -i ansible/inventory.ini
         env:
-          ANSIBLE_HOST_KEY_CHECKING: False
+          ANSIBLE_HOST_KEY_CHECKING: false
