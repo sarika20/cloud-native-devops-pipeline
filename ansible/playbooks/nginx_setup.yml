@@ -5,7 +5,7 @@
   tasks:
     - name: Update apt cache
       apt:
-        update_cache: yes
+        update_cache: Yes
 
     - name: Install Nginx
       apt:
