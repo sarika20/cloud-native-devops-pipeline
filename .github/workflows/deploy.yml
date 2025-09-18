@@ -1,5 +1,5 @@
 ---
-name: CI/CD: Deploy Nginx using Ansible
+name: CI/CD Deploy Nginx using Ansible
 
 on:
   push:
