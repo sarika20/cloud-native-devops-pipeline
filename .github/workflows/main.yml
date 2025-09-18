@@ -10,12 +10,12 @@ jobs:
     name: Run yamllint
     runs-on: ubuntu-latest
     steps:
-     - name: Checkout code
-       uses: actions/checkout@v4
-     - name: Install yamllint
-       run: pip install yamllint
-     - name: Run yamllint
-       run: yamllint --strict .
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Install yamllint
+      run: pip install yamllint
+    - name: Run yamllint
+      run: yamllint --strict .
             # Optional: Add --strict to treat warnings as errors
             # run: yamllint --strict .
   deploy:
