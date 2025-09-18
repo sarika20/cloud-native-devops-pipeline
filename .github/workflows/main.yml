@@ -5,10 +5,13 @@ name: Full DevOps CI/CD
   push:
     branches:
       - main
+  pull_request:
+    types: [opened]
 
 jobs:
   yamllint:
     name: Run yamllint
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -18,10 +21,10 @@ jobs:
         run: pip install yamllint
 
       - name: Run yamllint
-        # Optional: Remove --strict if you want to allow warnings
         run: yamllint --strict .
 
   deploy:
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -67,3 +70,26 @@ jobs:
             -u ubuntu
         env:
           ANSIBLE_HOST_KEY_CHECKING: false
+
+  notify:
+    name: Send PR Notification
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Email Notification
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: sarikamarathe25@gmail.com
+          password: Pujapatil@7177
+          subject: 'New Pull Request Created'
+          to: sarikamarathe25@gmail.com
+          from: sarikamarathe25@gmail.com
+          body: |
+            A new pull request has been raised in the repo!
+            📦 Repo: ${{ github.repository }}
+            🔖 PR Title: ${{ github.event.pull_request.title }}
+            👤 Author: ${{ github.event.pull_request.user.login }}
+            🔗 PR URL: ${{ github.event.pull_request.html_url }}
+          secure: true
