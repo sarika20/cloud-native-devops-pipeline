@@ -1,7 +1,7 @@
 ---
 name: Full DevOps CI/CD
 
-on:
+"on":
   push:
     branches:
       - main
@@ -66,4 +66,4 @@ jobs:
             --private-key key.pem \
             -u ubuntu
         env:
-          ANSIBLE_HOST_KEY_CHECKING: False
+          ANSIBLE_HOST_KEY_CHECKING: false
